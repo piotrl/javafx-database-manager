@@ -20,7 +20,7 @@
               GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.rowSpan="2"
               prefWidth="150" prefHeight="200" />
 
-    <Button text="Usuń"
+    <Button text="Delete"
             GridPane.columnIndex="0" GridPane.rowIndex="3"
             onAction="#handleRemoveUser" disable="false" />
 
@@ -30,9 +30,9 @@
 
     <HBox spacing="10" alignment="TOP_LEFT"
           GridPane.columnIndex="1" GridPane.rowIndex="2">
-        <Button text="Dodaj"
+        <Button text="Add"
                 onAction="#handleAddUser" />
-        <Button text="Edytuj"
+        <Button text="Edit"
                 onAction="#handleEditUser" />
     </HBox>
 
