@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:controller="net.piotrl.mvcrud.controller.UsersController"
+          xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" hgap="20" vgap="15">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+    <gridLinesVisible>false</gridLinesVisible>
+
+    <Text text="Manage users"
+          GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" />
+
+    <ListView fx:id="usersList"
+              GridPane.rowIndex="1" GridPane.columnIndex="0" GridPane.rowSpan="2"
+              prefWidth="150" prefHeight="200" />
+
+    <Button text="Usuń"
+            GridPane.columnIndex="0" GridPane.rowIndex="3"
+            onAction="#handleRemoveUser" disable="false" />
+
+
+    <TextField fx:id="userField"
+        GridPane.valignment="TOP" GridPane.halignment="LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+    <HBox spacing="10" alignment="TOP_LEFT"
+          GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <Button text="Dodaj"
+                onAction="#handleAddUser" />
+        <Button text="Edytuj"
+                onAction="#handleEditUser" />
+    </HBox>
+
+    <Text fx:id="notification"
+          GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.columnSpan="2" />
+</GridPane>
