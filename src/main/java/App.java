@@ -1,14 +1,9 @@
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * @author: piotr
- * @version: 2.0 2014-01-19
- */
 public class App extends Application {
     public static void main(String[] args) {
         // TODO: Init table by User class
