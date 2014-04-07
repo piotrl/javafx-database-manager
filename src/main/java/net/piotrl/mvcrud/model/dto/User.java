@@ -2,10 +2,6 @@ package net.piotrl.mvcrud.model.dto;
 
 import java.util.Date;
 
-/**
- * @author : piotr lewandowski
- * @version : 10.11.13
- */
 public class User {
     private int id;
     private String name;
