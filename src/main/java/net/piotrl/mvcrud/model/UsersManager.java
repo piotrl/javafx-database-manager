@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Communication with Database in Users contex
@@ -30,9 +32,28 @@ public class UsersManager {
         return Dbal.select("*", tableName, column + " = " + condtition);
     }
 
+    public List<User> getAllUsers()
+        throws SQLException {
+        List<User> users = new ArrayList<User>();
+
+        ResultSet userSets = getAll();
+        while(userSets.next()) {
+            users.add(new User(userSets.getInt("id"), userSets.getString("name")));
+        }
+
+        try {
+            if (userSets != null)
+                userSets.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        Dbal.clearConnection();
+        return users;
+    }
+
     /**
      * Create data into db
-     * @param user
      */
     public void add(User user)
             throws SQLException {
@@ -50,16 +71,27 @@ public class UsersManager {
             // 1 is id column in the users table; set it to the user object
             user.setId(insertedData.getInt(1));
         }
+
+        try {
+            if (insertedData != null)
+                insertedData.close();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Dbal.clearConnection();
     }
 
     public void remove(String columnName, String condition)
             throws SQLException {
         Dbal.delete(tableName, columnName + " = " + condition);
+        Dbal.clearConnection();
     }
 
     public void remove(User user)
             throws SQLException {
         Dbal.delete(tableName, "id" + " = '" + user.getId() + "'");
+        Dbal.clearConnection();
     }
 
     public void edit(User user)
@@ -73,11 +105,7 @@ public class UsersManager {
 
         String condition = "id = " + user.getId();
 
-        try {
-            Dbal.update(tableName, columnNames, values, condition);
-        }
-        catch(SQLException ex) {
-            ex.printStackTrace();
-        }
+        Dbal.update(tableName, columnNames, values, condition);
+        Dbal.clearConnection();
     }
 }

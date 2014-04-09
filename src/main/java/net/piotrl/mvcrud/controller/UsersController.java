@@ -37,13 +37,10 @@ public class UsersController implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        List<User> users = new ArrayList<User>();
+        List<User> users = null;
 
         try {
-            ResultSet userSets = usersManager.getAll();
-            while(userSets.next()) {
-                users.add(new User(userSets.getInt("id"), userSets.getString("name")));
-            }
+            users = usersManager.getAllUsers();
         } catch (SQLException ex) {
             notification.setText("Problem with loading users from database");
         }
