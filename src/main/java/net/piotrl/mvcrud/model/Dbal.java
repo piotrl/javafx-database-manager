@@ -23,7 +23,7 @@ class Dbal {
         FileInputStream in = null;
 
         try {
-            in = new FileInputStream("src/main/resources/database.properties");
+            in = new FileInputStream(ClassLoader.getSystemResource("database.properties").getPath());
             props.load(in);
         } catch (IOException ex) {
             ex.printStackTrace();
